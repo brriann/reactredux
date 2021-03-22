@@ -2,6 +2,7 @@ import React, { Fragment, Suspense, lazy, useState, useCallback } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from './theme';
+import GlobalStyles from './GlobalStyles';
 
 import Header from './shared/Header'
 import Footer from './shared/Footer'
@@ -28,6 +29,7 @@ const App = () => {
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
+        <GlobalStyles />
         <Header
           mobileDrawerOpen={isMobileDrawerOpen}
           handleMobileDrawerOpen={handleMobileDrawerOpen}
