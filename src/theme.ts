@@ -1,9 +1,9 @@
 //@ts-nocheck
 
-import { createMuiTheme, responsiveFontSizes } from "@material-ui/core";
+import { unstable_createMuiStrictModeTheme as createMuiTheme, responsiveFontSizes } from "@material-ui/core";
 
 // colors
-const primary = "#b3294e";
+const primary = "#0088ff";
 const secondary = "#4829B2";
 const black = "#343a40";
 const darkBlack = "rgb(36, 40, 44)";
@@ -119,6 +119,11 @@ const theme = createMuiTheme({
           paddingRight: spacing
         }
       }
+    }
+  },
+  MuiButton: {
+    raisedPrimary: {
+      color: 'white',
     }
   },
   typography: {

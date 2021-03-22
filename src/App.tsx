@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, lazy } from "react";
+import React, { Fragment, Suspense, lazy, useState, useCallback } from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from './theme';
@@ -11,12 +11,28 @@ const Page1Component = lazy(() => import("./pages/Page1"));
 const Page2Component = lazy(() => import("./pages/Page2"));
 const Page3Component = lazy(() => import("./pages/Page3"));
 
-function App() {
+
+const App = () => {
+
+  const [isMobileDrawerOpen, setIsMobileDrawerOpen] = useState(false);
+
+  const handleMobileDrawerOpen = useCallback(() => {
+    setIsMobileDrawerOpen(true);
+  }, [setIsMobileDrawerOpen]);
+
+  const handleMobileDrawerClose = useCallback(() => {
+    setIsMobileDrawerOpen(false);
+  }, [setIsMobileDrawerOpen]);
+
   return (
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
-        <Header />
+        <Header
+          mobileDrawerOpen={isMobileDrawerOpen}
+          handleMobileDrawerOpen={handleMobileDrawerOpen}
+          handleMobileDrawerClose={handleMobileDrawerClose}
+        />
         <Suspense fallback={<Fragment />}>
           <Switch>
             <Route path="/page1">
