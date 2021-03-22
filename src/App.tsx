@@ -3,6 +3,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from './theme';
 
+import Header from './shared/Header'
+import Footer from './shared/Footer'
+
 const HomePageComponent = lazy(() => import("./pages/HomePage"));
 const Page1Component = lazy(() => import("./pages/Page1"));
 const Page2Component = lazy(() => import("./pages/Page2"));
@@ -13,6 +16,7 @@ function App() {
     <BrowserRouter>
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
+        <Header />
         <Suspense fallback={<Fragment />}>
           <Switch>
             <Route path="/page1">
@@ -29,6 +33,7 @@ function App() {
             </Route>
           </Switch>
         </Suspense>
+        <Footer />
       </MuiThemeProvider>
     </BrowserRouter>
   );
