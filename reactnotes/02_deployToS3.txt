@@ -1,0 +1,50 @@
+React > S3 > CloudFront
+Certificate Manager > Route 53 DNS
+Route 53 DNS > CloudFront
+
+https://medium.com/@wolovim/deploying-create-react-app-to-s3-or-cloudfront-48dae4ce0af
+https://medium.com/dailyjs/a-guide-to-deploying-your-react-app-with-aws-s3-including-https-a-custom-domain-a-cdn-and-58245251f081
+
+(create S3 bucket)
+-enable public access
+Properties > Static Website Hosting
+Permission > Bucket Policy
+
+{
+  "Version":"2012-10-17",
+  "Statement":[
+    {
+      "Sid":"PublicRead",
+      "Effect":"Allow",
+      "Principal": "*",
+      "Action":["s3:GetObject","s3:GetObjectVersion"],
+      "Resource":["arn:aws:s3:::awsexamplebucket1/*"]
+    }
+  ]
+}
+
+
+REACT NPM DEPLOY:
+
+set npm deploy to:
+"deploy": "aws s3 cp ./build s3://bfostdev.com --recursive --exclude \"*.DS_Store\" --exclude \"index.html\" --cache-control public,max-age=604800 && aws s3 cp ./build/index.html s3://bfostdev.com  --cache-control public,max-age=604800"
+
+npm run build
+npm run deploy
+
+
+CLOUDFRONT SETUP
+-create distribution, http -> https
+-alternate domain names: match Route 53 hosted zone
+-use custom certificate created in below step
+-use regional URL someBucketName.s3.us-west-2.amazonaws.com to preserve URL bar
+	
+
+AWS CERTIFICATE MANAGER
+-NoVa region for this step
+for site.com, *.site.com
+
+ROUTE53 DNS SETUP
+-create A record to cloudfront distribution
+
+

@@ -1,0 +1,253 @@
+###
+### https://medium.com/javascript-in-plain-english/testing-in-react-part-1-types-tools-244107abf0c6
+###
+
+Test types
+-rendering component trees
+-end-to-end testing for app
+
+Tools
+
+1. React Testing Library (replaces Enzyme)
+https://testing-library.com/docs/react-testing-library/intro
+-tests DOM nodes rather than rendered React components
+
+2. Jest
+-JS testing framework
+-expect(var).toBe(val)
+-uses snapshot testing to test that components are rendering as expected
+--pseudo-creates a component within test environment and turns it into a JSON tree
+
+3. Jest-Dom
+companion library for React Test Library that provides custom DOM element matchers for Jest
+
+###
+### https://medium.com/javascript-in-plain-english/testing-in-react-part-2-react-testing-library-f32432b93c6c
+###
+
+strategy: test functionality, not implementation
+-(what does user see/interact with?)
+-query the DOM the same way the user would.  find form element by label text, etc.
+-or cheat and find elements by data-testid
+
+React Testing Library renders a React component and searches/queries for a DOM node
+Jest then can test a property of the queried Node (exists in DOM? has specified length?)
+
+# API QUERIES
+
+https://testing-library.com/docs/dom-testing-library/api-queries/
+
+get - go-to
+query - used to assert absence of element
+find - used for elemenents that appear asynchronously
+
+Available Variants:
+getBy
+getAllBy
+queryBy
+queryAllBy
+findBy
+findAllBy
+
+Available Queries:
+ByLabelText
+ByPlaceholderText
+ByText
+ByAltText
+ByTitle
+ByDisplayValue
+ByRole
+ByTestId
+
+Queries are called on a SCREEN object
+screen = document.body for the test environment
+
+screen.getByText('submit')
+screen.debug(screen.getByText('submit')) (prints HTML to terminal)
+
+# EVENTS
+
+https://github.com/testing-library/dom-testing-library/blob/master/src/event-map.js
+
+fireEvent
+
+fireEvent[eventName](node: HTMLElement, eventProperties: Object)
+
+const rightClick = { button: 2 } 
+fireEvent.click(getByText('Submit'), rightClick)
+
+click, dblClick, drag, drop, mouseEnter, mouseLeave
+copy, cut, paste
+focus, blur, focusIn, focusOut
+change, input, invalid, submit, reset
+keyDown, keyPress, keyUp
+select
+scroll
+
+Async DOM utilities:
+
+waitFor
+waitForElementToBeRemoved
+
+###
+### https://medium.com/javascript-in-plain-english/testing-in-react-part-3-jest-jest-dom-7a8a03ae60b
+###
+
+React Testing Library - renders elements on which tests can be performed
+Jest - tests DOM nodes
+Jest-Dom - companion library for RTL that provides custom DOM element matchers for Jest
+-needed if Jest matchers aren't enough?
+
+# JEST
+
+configuration 
+https://jestjs.io/docs/en/next/configuration
+-package.json
+-jest.config.js (ts?)
+-  --config </some/path.js|json>
+
+Test suites
+describe(name, fn)
+
+Test cases
+test(name, fn, timeout)
+
+# Matchers
+.toBe()
+
+bool/truthy .toBeNull() .toBeDefined()
+numeric .toBeGreaterThan() .toBeCloseTo()
+string .toMatch()
+array .toContain()
+error handling .toThrow()
+
+jest matchers
+https://jestjs.io/docs/en/expect
+
+jest-dom matchers
+https://github.com/testing-library/jest-dom#custom-matchers
+
+jest-extended matchers
+https://github.com/jest-community/jest-extended
+https://www.npmjs.com/package/jest-extended
+
+# ASYNC TESTING
+
+1. callbacks -  use done keyword
+
+test('the data is peanut butter', done => {
+  function callback(data) {     
+    try {       
+      expect(data).toBe('peanut butter');       
+      done();     
+    } catch (error) {       
+      done(error);     
+    }
+  }   
+  
+  fetchData(callback);
+});
+
+2. promises - Jest waits for promises to resolve (if a test encounters a returned promise)
+
+
+3. async/await - use async keyword, then try/catch and await
+
+test('the data is peanut butter', async () => {   
+  const data = await fetchData();   
+  expect(data).toBe('peanut butter'); 
+});  
+test('the fetch fails with an error', async () => {  
+  expect.assertions(1); 
+  try {     
+    await fetchData();   
+  } catch (e) {         
+    expect(e).toMatch('error');   
+  } 
+});
+
+# SNAPSHOTS
+https://jestjs.io/docs/en/snapshot-testing
+
+# SETUP/TEARDOWN
+https://jestjs.io/docs/en/setup-teardown
+
+beforeEach()
+afterEach()
+
+beforeEach(() => {
+  initializeCityDatabase();
+});
+
+beforeEach and afterEach can handle asynchronous code in the same ways that tests can handle asynchronous code 
+-they can either take a done parameter or return a promise.
+
+beforeEach(() => {
+  return initializeCityDatabase();
+});
+
+One-Time Setup
+
+beforeAll()
+afterAll()
+
+# scoping setup/teardown
+
+// before all tests
+beforeEach(fn)
+
+describe('suite1', fn.. {
+  // before suite1 tests
+  beforeEach(fn)
+}
+
+# MOCKING
+functions
+https://jestjs.io/docs/en/mock-functions
+
+modules
+https://jestjs.io/docs/en/manual-mocks
+
+
+
+###
+### https://medium.com/javascript-in-plain-english/testing-in-react-part-4-enzyme-9b030ad616ae
+###
+
+Enzyme vs RTL
+-Enzyme can directly test state and the manipulation of state
+
+Enzyme rendering:
+-shallow rendering
+--test components as units
+
+-full DOM rendering
+--for components that interact with DOM API's
+
+-static rendering
+
+Enzyme API's
+-DOM traversal
+-state manipulation
+-assertions
+
+
+###
+### https://medium.com/javascript-in-plain-english/testing-in-react-part-5-end-to-end-testing-with-cypress-bd2bf8d3385f
+###
+
+Cypress - end-to-end / integration tests
+-integrates with browsers on host machine
+-visit URL's within tests. no mounting components
+-Cypress GUI App Preview window
+
+###
+### https://medium.com/javascript-in-plain-english/testing-in-react-part-6-real-world-testing-with-react-testing-library-jest-enzyme-and-cypress-9c73436d95d8
+###
+
+Classic RTL pattern, testing a component that is passed props:
+(import of Router from react-router-dom and inclusion of <Router> within render() is needed for <Link>'s...)
+
+render(<Button path={pathProp} text={textProp} />);
+const btn = screen.getByText(textProp);
+expect(btn.href).toContain(pathProp);
