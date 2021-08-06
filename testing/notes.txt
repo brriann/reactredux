@@ -1,0 +1,110 @@
+###
+### JEST - JS testing framework
+###
+
+https://jestjs.io/
+
+describe
+test/it
+expect
+matchers: toBe/not
+- toBe: Object.is (strict equality)
+
+expect.extend() //add your own matchers to expect
+
+MOCKING
+jest.fn
+https://jestjs.io/docs/mock-functions
+
+expect(jest.Mock).toHaveBeenCalled()
+
+jest.mock('module-name', () => ({
+    ...(jest.requireActual('module-name') as Record<string, never>),
+    moduleFunction: jest.fn().mockImplementation(() => returnValue)
+}))
+
+jest.spyOn(module, 'functionName')
+jest.spyOn(module, 'functionName').mockImplementation(x => {})
+
+
+JEST.LIFECYCLE
+beforeEach()
+afterEach()
+jest.clearAllMocks() - best practice ?
+
+###
+### REACT TESTING LIBRARY - test React components
+###
+
+https://testing-library.com/docs/react-testing-library/intro/
+https://testing-library.com/docs/react-testing-library/cheatsheet/
+
+test using DOM
+less access to internals of components
+
+RENDER - render, RenderResult, getByText, getByRole, toBeInTheDocument, toHaveAttribute
+
+USEREVENT - userEvent, userEvent.click(TargetElement)
+
+SCREEN - findByText
+
+HTMLElement.click() (lib dom ?)
+
+
+###
+### ENZYME - test React components
+###
+
+https://enzymejs.github.io/enzyme/
+
+shallow vs deep rendering
+
+MOUNT: (ReactElement): ReactWrapper (ReactWrapper extends CommonWrapper)
+
+https://enzymejs.github.io/enzyme/docs/api/mount.html
+https://enzymejs.github.io/enzyme/docs/api/ReactWrapper/mount.html
+https://enzymejs.github.io/enzyme/docs/api/mount.html#reactwrapper-api
+
+const wrapper = mount(<Your JSX Here>)
+
+CommonWrapper : find, exists, getNodes, getElements, getDOMNode, etc ....
+
+expect(wrapper.find('ul')).toHaveLength(1)
+
+SHALLOW: used similar to mount, but Shallow Rendering
+
+const wrapper = mount(<Your JSX Here>)
+wrapper.find(something).dive() - shallow render a child?
+
+SNAPSHOT TESTING
+
+enzyme-to-json
+
+expect(toJson(mount(something))).toMatchSnapshot
+
+__snapshots__, .snap
+
+SIMULATE - simulate('click')
+
+
+###
+### RTL && ENZYME
+###
+
+https://medium.com/wesionary-team/react-testing-library-vs-enzyme-afd29db380ac
+
+- Enzyme more focused on implementation details of components
+- RTL targets "user's perspective"
+
+https://boyney123.medium.com/my-experience-moving-from-enzyme-to-react-testing-library-5ac65d992ce
+
+- RTL may support testing of Hooks better
+
+- worth having both installed, used as needed!
+
+RTL userEvent vs ENZYME simulate
+RTL render vs ENZYME mount
+
+
+
+
