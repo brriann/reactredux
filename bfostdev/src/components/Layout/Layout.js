@@ -76,44 +76,32 @@ function Layout(props) {
               <div>
                 <Link
                   color={'primary'}
-                  href={'https://flatlogic.com/'}
+                  href={'https://brriann.github.io'}
                   target={'_blank'}
                   className={classes.link}
                 >
-                  Flatlogic
+                  bfostdev
                 </Link>
                 <Link
                   color={'primary'}
-                  href={'https://flatlogic.com/about'}
+                  href={'https://brriann.github.io'}
                   target={'_blank'}
                   className={classes.link}
                 >
-                  About Us
+                  about
                 </Link>
                 <Link
                   color={'primary'}
-                  href={'https://flatlogic.com/blog'}
+                  href={'https://brriann.github.io'}
                   target={'_blank'}
                   className={classes.link}
                 >
-                  Blog
+                  blog
                 </Link>
               </div>
               <div>
                 <Link
-                  href={'https://www.facebook.com/flatlogic'}
-                  target={'_blank'}
-                >
-                  <IconButton aria-label="facebook">
-                    <Icon
-                      path={FacebookIcon}
-                      size={1}
-                      color="#6E6E6E99"
-                    />
-                  </IconButton>
-                </Link>
-                <Link
-                  href={'https://twitter.com/flatlogic'}
+                  href={'https://twitter.com/bfostdev'}
                   target={'_blank'}
                 >
                   <IconButton aria-label="twitter">
@@ -125,7 +113,7 @@ function Layout(props) {
                   </IconButton>
                 </Link>
                 <Link
-                  href={'https://github.com/flatlogic'}
+                  href={'https://github.com/brriann'}
                   target={'_blank'}
                 >
                   <IconButton
