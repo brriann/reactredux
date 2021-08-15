@@ -1,0 +1,7 @@
+{
+    "name": "tables",
+    "version": "0.0.0",
+    "main": "Tables.tsx",
+    "private": true
+  }
+  

@@ -1,0 +1,7 @@
+{
+    "name": "useravatar",
+    "version": "0.0.0",
+    "private": true,
+    "main": "UserAvatar.tsx"
+  }
+  
