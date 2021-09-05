@@ -1,0 +1,10 @@
+https://antbutcher.medium.com/hosting-a-react-js-app-on-azure-blob-storage-azure-cdn-for-ssl-and-routing-8fdf4a48feeb
+
+https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal
+
+https://medium.com/cutting-code/serving-single-page-applications-from-azure-with-blob-storage-and-making-it-work-when-you-refresh-713faf3df387
+
+https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-static-website-how-to?tabs=azure-portal
+
+CICD WITH GITHUB ACTIONS
+https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-static-site-github-actions
