@@ -7,7 +7,7 @@
         "import"
     ],
     "rules": {
-        "eslint quotes": ["error", "single"]
+        "eslint-quotes": ["error", "single"]
     },
     "parserOptions": {
         "requireConfigFile": false
