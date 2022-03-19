@@ -6,12 +6,18 @@ import {
   Menu,
   MenuItem,
   Toolbar,
+  Tooltip,
   Typography,
+  ListItemIcon,
+  Divider,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import Settings from '@mui/icons-material/Settings';
+import Logout from '@mui/icons-material/Logout';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 import React, { useState } from 'react';
 
@@ -38,10 +44,31 @@ const Header: React.FunctionComponent = () => {
       open={isMenuOpen}
       onClose={handleProfileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleProfileMenuClose}>Account</MenuItem>
-      <MenuItem onClick={handleProfileMenuClose}>Settings</MenuItem>
-      <MenuItem onClick={handleProfileMenuClose}>Log Out</MenuItem>
+      <MenuItem onClick={handleProfileMenuClose}>
+        <ListItemIcon>
+          <AccountCircle />
+        </ListItemIcon>
+        Profile
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuClose}>
+        <ListItemIcon>
+          <ManageAccountsIcon />
+        </ListItemIcon>
+        Account + Billing
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuClose}>
+        <ListItemIcon>
+          <Settings fontSize="small" />
+        </ListItemIcon>
+        App Settings
+      </MenuItem>
+      <Divider />
+      <MenuItem onClick={handleProfileMenuClose}>
+        <ListItemIcon>
+          <Logout fontSize="small" />
+        </ListItemIcon>
+        Sign out
+      </MenuItem>
     </Menu>
   );
 
@@ -68,35 +95,41 @@ const Header: React.FunctionComponent = () => {
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'flex' } }}>
-            <IconButton
-              size="large"
-              aria-label="show 4 new emails"
-              color="inherit"
-            >
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <Tooltip title="Messages">
+              <IconButton
+                size="large"
+                aria-label="show 4 new messages"
+                color="inherit"
+              >
+                <Badge badgeContent={4} color="error">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Notifications">
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={17} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Account / Settings">
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Toolbar>
       </AppBar>
