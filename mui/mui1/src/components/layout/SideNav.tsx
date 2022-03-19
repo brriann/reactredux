@@ -10,7 +10,11 @@ import {
 import LinkIcon from '@mui/icons-material/Link';
 
 import React, { useEffect, useState } from 'react';
-import { useLayoutState } from '../../context/LayoutContext';
+import {
+  toggleSidebar,
+  useLayoutDispatch,
+  useLayoutState,
+} from '../../context/LayoutContext';
 
 const navItems = [
   {
@@ -42,6 +46,7 @@ const navItems = [
 const SideNav: React.FunctionComponent = () => {
   const theme = useTheme();
   const { isSidebarOpened } = useLayoutState();
+  const layoutDispatch = useLayoutDispatch();
 
   const [isPermanent, setIsPermanent] = useState(true);
 
@@ -62,7 +67,12 @@ const SideNav: React.FunctionComponent = () => {
         {navItems.map((ni) => (
           <ListItem
             key={ni.id}
-            onClick={() => console.log(ni.link)}
+            onClick={() => {
+              console.log(ni.link);
+              if (!isPermanent) {
+                toggleSidebar(layoutDispatch);
+              }
+            }}
             sx={{
               marginBottom: '15px',
               cursor: 'pointer',
