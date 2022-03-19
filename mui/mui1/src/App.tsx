@@ -9,13 +9,11 @@ const theme = createTheme();
 
 const App: React.FunctionComponent = () => {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <CssBaseline>
-          <Header />
-        </CssBaseline>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <CssBaseline>
+        <Header />
+      </CssBaseline>
+    </ThemeProvider>
   );
 };
 
