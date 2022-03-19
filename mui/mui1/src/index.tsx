@@ -4,9 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import CssBaseline from '@mui/material/CssBaseline';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { LayoutProvider } from './context/LayoutContext';
+
+const theme = createTheme();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <LayoutProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline>
+          <App />
+        </CssBaseline>
+      </ThemeProvider>
+    </LayoutProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

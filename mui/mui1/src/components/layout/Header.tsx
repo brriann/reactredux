@@ -12,8 +12,10 @@ import {
   Typography,
   ListItemIcon,
   Divider,
+  useTheme,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import MailIcon from '@mui/icons-material/Mail';
 import MessageIcon from '@mui/icons-material/Message';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -23,6 +25,12 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
+import {
+  useLayoutState,
+  useLayoutDispatch,
+  toggleSidebar,
+} from '../../context/LayoutContext';
+
 import { messages, notifications } from '../../data/stub';
 
 const profileMenuId = 'profile-account-menu';
@@ -30,6 +38,10 @@ const messagesMenuId = 'messsages-account-menu';
 const notificationsMenuId = 'notifications-account-menu';
 
 const Header: React.FunctionComponent = () => {
+  const theme = useTheme();
+  const layoutState = useLayoutState();
+  const layoutDispatch = useLayoutDispatch();
+
   const [anchorElProfileMenu, setAnchorElProfileMenu] =
     useState<HTMLElement | null>(null);
   const [anchorElMessagesMenu, setAnchorElMessagesMenu] =
@@ -149,16 +161,23 @@ const Header: React.FunctionComponent = () => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar
+        position="fixed"
+        sx={{
+          width: '100vw',
+          zIndex: theme.zIndex.drawer + 1,
+        }}
+      >
         <Toolbar>
           <IconButton
+            onClick={() => toggleSidebar(layoutDispatch)}
             size="large"
             edge="start"
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            {layoutState.isSidebarOpened ? <ArrowBackIcon /> : <MenuIcon />}
           </IconButton>
           <Typography
             variant="h6"
