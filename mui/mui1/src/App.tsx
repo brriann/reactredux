@@ -1,15 +1,20 @@
 import React from 'react';
 import './App.css';
 import CssBaseline from '@mui/material/CssBaseline';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+import Header from './components/Header';
+
+const theme = createTheme();
 
 const App: React.FunctionComponent = () => {
   return (
     <>
-      <CssBaseline>
-        <div>
-          <p>Mui1 app</p>
-        </div>
-      </CssBaseline>
+      <ThemeProvider theme={theme}>
+        <CssBaseline>
+          <Header />
+        </CssBaseline>
+      </ThemeProvider>
     </>
   );
 };
