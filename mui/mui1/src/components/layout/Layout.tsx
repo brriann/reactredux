@@ -4,14 +4,17 @@ import Header from './Header';
 import SideNav from './SideNav';
 
 const Layout: React.FunctionComponent = () => (
-  <Grid container>
-    <Grid item xs={12}>
-      <Header />
+  <>
+    <SideNav />
+    <Grid container>
+      <Grid item xs={12}>
+        <Header />
+      </Grid>
+      {/* <Grid item xs={12}>
+      
+    </Grid> */}
     </Grid>
-    <Grid item xs={12}>
-      <SideNav />
-    </Grid>
-  </Grid>
+  </>
 );
 
 export default Layout;
