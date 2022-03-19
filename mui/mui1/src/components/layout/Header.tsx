@@ -23,7 +23,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
-import { messages, notifications } from '../data/stub';
+import { messages, notifications } from '../../data/stub';
 
 const profileMenuId = 'profile-account-menu';
 const messagesMenuId = 'messsages-account-menu';
