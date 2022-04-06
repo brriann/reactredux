@@ -26,7 +26,10 @@
     ]
   },
   "parserOptions": {
-    "requireConfigFile": false
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+   }
   },
   "settings": {
     "import/resolver": {
@@ -34,5 +37,10 @@
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
   }
 }
