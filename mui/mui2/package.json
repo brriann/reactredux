@@ -19,7 +19,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eslint": "eslint \"src/**.*\" --fix --ignore-pattern node_modules/ --ignore-pattern *.md --ignore-pattern *.json",
+    "eslint": "eslint \"src/**.*\" --fix",
     "prettier": "prettier . --write",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
