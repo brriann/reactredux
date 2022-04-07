@@ -1,8 +1,11 @@
 import React from 'react';
+import PageParent from './PageParent';
 
 function SplashPage() {
     return (
-        <div>Splash TODO!</div>
+        <PageParent>
+            <div>Splash TODO!</div>
+        </PageParent>
     );
 }
 

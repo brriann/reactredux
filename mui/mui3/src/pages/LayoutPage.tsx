@@ -1,17 +1,18 @@
-import { Stack } from '@mui/material';
-
 import React from 'react';
 import GridLayout1 from '../components/grid/GridLayout1';
 import GridLayout2 from '../components/grid/GridLayout2';
 import StackLayout1 from '../components/stack/StackLayout1';
+import StackLayout3 from '../components/stack/StackLayout3';
+import PageParent from './PageParent';
 
 function LayoutPage() {
     return (
-        <Stack spacing={2}>
+        <PageParent>
             <GridLayout1 />
             <GridLayout2 />
             <StackLayout1 />
-        </Stack>
+            <StackLayout3 />
+        </PageParent>
     );
 }
 

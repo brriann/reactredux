@@ -1,8 +1,12 @@
 import React from 'react';
+import Form1 from '../components/form/Form1';
+import PageParent from './PageParent';
 
 function FormPage() {
     return (
-        <div>Form TODO!</div>
+        <PageParent>
+            <Form1 />
+        </PageParent>
     );
 }
 

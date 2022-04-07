@@ -1,8 +1,11 @@
 import React from 'react';
+import PageParent from './PageParent';
 
 function WidgetPage() {
     return (
-        <div>Widget TODO!</div>
+        <PageParent>
+            <div>Splash TODO!</div>
+        </PageParent>
     );
 }
 
