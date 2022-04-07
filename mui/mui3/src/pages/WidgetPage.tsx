@@ -4,7 +4,7 @@ import PageParent from './PageParent';
 function WidgetPage() {
     return (
         <PageParent>
-            <div>Splash TODO!</div>
+            <div>Widget TODO!</div>
         </PageParent>
     );
 }
