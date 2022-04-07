@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
+// import { ThemeProvider } from '@mui/material/styles';
 
 import './App.css';
-import { useThemeContext } from './themes/themeContext';
-import themeDark from './themes/theme-dark';
-import themeLight from './themes/theme-light';
 import { CssBaseline } from '@mui/material';
 
-const App: React.FC = () => {
+import { useThemeContext } from './themes/themeContext';
+// import themeDark from './assets/theme-dark';
+// import themeLight from './assets/theme';
+
+import routes from './routes';
+
+const App = () => {
   const { pathname } = useLocation();
   const { themeState, themeDispatch } = useThemeContext();
   const { darkTheme } = themeState;
@@ -22,12 +25,16 @@ const App: React.FC = () => {
   }, [pathname]);
 
   return (
-    <ThemeProvider theme={darkTheme ? themeDark : themeLight}>
+    // <ThemeProvider theme={darkTheme ? themeDark : themeLight}>
+    <>
       <CssBaseline />
       <Routes>
-        <Route path="*" element={<Navigate to="/splash" />} />
+        {routes.map((r) => (
+          <Route path={r.route} element={r.component} key={r.key} />
+        ))}
       </Routes>
-    </ThemeProvider>
+    </>
+    // </ThemeProvider>
   );
 };
 
