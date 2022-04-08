@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <ResponsiveAppBar /> 
-      <Container sx={{ mt: 1}} maxWidth={'xl'}>
+      <Container sx={{ mt: 1}} maxWidth={false} disableGutters>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             {routes.map(r => (
