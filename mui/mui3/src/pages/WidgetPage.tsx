@@ -7,6 +7,7 @@ import PageParent from './PageParent';
 import headshot1 from '../assets/headshot1.JPG';
 //@ts-ignore
 import headshot2 from '../assets/headshot2.JPG';
+import ProgressCard from '../components/widget/ProgressCard';
 
 const people = [
     {
@@ -23,11 +24,32 @@ const people = [
     }
 ]
 
+const progressItems = [
+    {
+        title: 'Metric',
+        value: 7,
+        maxValue: 9
+    },
+    {
+        title: 'Progress',
+        value: 55,
+        maxValue: 80
+    },
+    {
+        title: 'Visual',
+        value: 14,
+        maxValue: 50
+    },
+];
+
 function WidgetPage() {
     return (
         <PageParent>
             {people.map(p => (
                 <PersonCard {...p} />
+            ))}
+            {progressItems.map(pi => (
+                <ProgressCard {...pi} />
             ))}
         </PageParent>
     );

@@ -16,11 +16,11 @@ function PersonCard({ name, photo, description, value }: IPersonCardProps) {
             }}
         >
             <Paper
-            elevation={3}
-            sx={{
-                width: '310px',
-                height: '75px',
-                padding: '5px 10px'
+                elevation={3}
+                sx={{
+                    width: '310px',
+                    height: '75px',
+                    padding: '5px 10px'
             }}>
                 <Stack spacing={3} direction="row" justifyContent="space-between">
                     <Tooltip title={name}>
