@@ -8,6 +8,7 @@ import headshot1 from '../assets/headshot1.JPG';
 //@ts-ignore
 import headshot2 from '../assets/headshot2.JPG';
 import ProgressCard from '../components/widget/ProgressCard';
+import InfoCard from '../components/widget/InfoCard';
 
 const people = [
     {
@@ -51,6 +52,7 @@ function WidgetPage() {
             {progressItems.map(pi => (
                 <ProgressCard key={pi.title} {...pi} />
             ))}
+            <InfoCard />
         </PageParent>
     );
 }
