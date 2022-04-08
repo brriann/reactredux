@@ -73,7 +73,7 @@ function UserEmailTable() {
     );
 }
 
-// fws draft list page
+// fws draft list page, email list page
 function AccordionTables() {
     return (
         <>

@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, InputLabel, ListItemText, MenuItem, OutlinedInput, Paper, Radio, RadioGroup, Select, SelectChangeEvent, Stack, Switch, TextField, Theme, Typography, useTheme } from '@mui/material';
+import { Box, Button, FormGroup, MenuItem, Paper, Stack, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
 
 const users = [
@@ -62,9 +62,10 @@ function Form2() {
         <Box
             component="form"
             sx={{
-                '& .MuiTextField-root': { m: 1, width: '30ch'},
-                '& .MuiFormControl-root': { m: 1, width: '30ch'},
-                '& .MuiButton-root': { m: 1, width: '20ch'},
+                '& .MuiTextField-root': { m: 1, width: '30ch' },
+                '& .MuiFormControl-root': { m: 1, width: '30ch' },
+                '& .MuiButton-contained': { width: '20ch' },
+                '& .MuiButton-root': { m: 1 },
             }}
         >
             <Paper sx={{
