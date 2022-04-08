@@ -46,10 +46,10 @@ function WidgetPage() {
     return (
         <PageParent>
             {people.map(p => (
-                <PersonCard {...p} />
+                <PersonCard key={p.name} {...p} />
             ))}
             {progressItems.map(pi => (
-                <ProgressCard {...pi} />
+                <ProgressCard key={pi.title} {...pi} />
             ))}
         </PageParent>
     );
